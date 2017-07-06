@@ -3,13 +3,15 @@
 const CamayakContentAPI = require('camayak-contentapi');
 const Integration = require('./lib/index');
 
-const api_key       = process.env.CAMAYAK_API_KEY 
-const shared_secret = process.env.CAMAYAK_SHARED_SECRET
+const api_key       = process.env.CAMAYAK_API_KEY;
+const shared_secret = process.env.CAMAYAK_SHARED_SECRET;
 
 // Your Contentful Personal Access Token for the Space you're publishing to.
-const contentful_token = process.env.CONTENTFUL_ACCESS_TOKEN || "your contentful personal access token";
+const contentful_token = process.env.CONTENTFUL_ACCESS_TOKEN;
+// The Contentful Space ID you're publishing into
+const contentful_space_id = process.env.CONTENTFUL_SPACE_ID;
 // The ContentType ID that represents a Camayak Story
-const contentful_story_type_id = process.env.CONTENTFUL_STORY_TYPE_ID || "your contentful content type id";
+const contentful_story_type_id = process.env.CONTENTFUL_STORY_TYPE_ID;
 
 // Create an instance of the Camayak Content API SDK.
 // The SDK constists of an HTTP server pre-configured with
@@ -35,14 +37,17 @@ let camayak = new CamayakContentAPI({
     publish: function(webhook, content) {
         let handler = new Integration({
             token: contentful_token,
+            space_id: contentful_space_id,
             story_type_id: contentful_story_type_id
         });
         handler.publish(content, function(error, response){
+            console.log("FOO", error, response)
             if (error) {
                 return webhook.fail(error);
             };
             return webhook.succeed({
                 published_id: response.published_id,
+                published_at: response.published_at,
                 published_url: response.published_url
             });
         });
@@ -53,6 +58,7 @@ let camayak = new CamayakContentAPI({
         // 
         let handler = new Integration({
             token: contentful_token,
+            space_id: contentful_space_id,
             story_type_id: contentful_story_type_id
         });
         handler.update(content, function(error, response){
@@ -61,6 +67,7 @@ let camayak = new CamayakContentAPI({
             };
             return webhook.succeed({
                 published_id: response.published_id,
+                published_at: response.published_at,
                 published_url: response.published_url
             });
         });
@@ -71,14 +78,17 @@ let camayak = new CamayakContentAPI({
         //
         let handler = new Integration({
             token: contentful_token,
+            space_id: contentful_space_id,
             story_type_id: contentful_story_type_id
         });
+        console.log(handler);
         handler.retract(content, function(error, response){
             if (error) {
                 return webhook.fail(error);
             };
             return webhook.succeed({
                 published_id: response.published_id,
+                published_at: response.published_at,
                 published_url: response.published_url
             });
         })
