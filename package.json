@@ -1,0 +1,30 @@
+{
+  "name": "camayak-contentapi-contentful-node",
+  "version": "1.0.0",
+  "description": "An example Camayak Content API Integration with Contentful.  Publish from Camayak into Contentful.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/camayak/camayak-contentapi-contentful-node.git"
+  },
+  "keywords": [
+    "Camayak",
+    "Publishing",
+    "Node",
+    "Javascript"
+  ],
+  "author": "Edward Smith",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/camayak/camayak-contentapi-contentful-node/issues"
+  },
+  "homepage": "https://github.com/camayak/camayak-contentapi-contentufl-node#readme",
+  "dependencies": {
+    "camayak-contentapi": "0.0.4",
+    "contentful-management": "^3.7.6"
+  }
+}
