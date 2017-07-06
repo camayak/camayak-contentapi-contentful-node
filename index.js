@@ -3,8 +3,8 @@
 const CamayakContentAPI = require('camayak-contentapi');
 const Integration = require('./lib/index');
 
-const api_key       = process.env.CAMAYAK_API_KEY       || "my api key from the Camayak publishing destination";
-const shared_secret = process.env.CAMAYAK_SHARED_SECRET || "my shared secret from the Camayak publishing destination";
+const api_key       = process.env.CAMAYAK_API_KEY 
+const shared_secret = process.env.CAMAYAK_SHARED_SECRET
 
 // Your Contentful Personal Access Token for the Space you're publishing to.
 const contentful_token = process.env.CONTENTFUL_ACCESS_TOKEN || "your contentful personal access token";
