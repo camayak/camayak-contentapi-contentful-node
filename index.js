@@ -30,6 +30,7 @@ const contentful_story_type_id = process.env.CONTENTFUL_STORY_TYPE_ID || "your c
 let camayak = new CamayakContentAPI({
     api_key: api_key,
     shared_secret: shared_secret,
+    port: process.env.PORT || 5000,
 
     publish: function(webhook, content) {
         let handler = new Integration({
