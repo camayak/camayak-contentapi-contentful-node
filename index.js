@@ -9,7 +9,7 @@ const shared_secret = process.env.CAMAYAK_SHARED_SECRET || "my shared secret fro
 // Your Contentful Personal Access Token for the Space you're publishing to.
 const contentful_token = process.env.CONTENTFUL_ACCESS_TOKEN || "your contentful personal access token";
 // The ContentType ID that represents a Camayak Story
-const contentful_story_type_id = process.env.CONTENTFUL_ACCESS_TOKEN || "your contentful content type id";
+const contentful_story_type_id = process.env.CONTENTFUL_STORY_TYPE_ID || "your contentful content type id";
 
 // Create an instance of the Camayak Content API SDK.
 // The SDK constists of an HTTP server pre-configured with
